@@ -2,4 +2,4 @@
 
 The code in this repo is all written in [Racket](http://racket-lang.org).
 
-If you want to see my solutions to [Project Euler](http://projecteuler.net) problems, click on the Euler directory.
+[Project Euler](http://projecteuler.net) solutions are in the [Euler directory](/tree/master/Euler).
