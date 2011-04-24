@@ -4,10 +4,10 @@ The code in this repo is all written in [Racket](http://racket-lang.org).
 
 ## Notes
 
-### Euler ###
+### Project Euler ###
 [Project Euler](http://projecteuler.net) solutions are in the Euler directory.
 
 **Completed:** 4/335
 
-### Asteroids ###  
+### Asteroids  
 This was a project I did for Fundamentals of Computer Science (CS2500). I used faux-MVC to organize my code (this was done in the first version of the project), which really helped me figure out how the functions I need to write would work in terms of arguments and returns. I may revisit this project later and rewrite some of it.
