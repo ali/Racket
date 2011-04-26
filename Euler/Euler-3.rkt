@@ -12,13 +12,12 @@
 (check-expect (divides? 5 8) false)
 
 ;; get-candidates: Number -> [Listof Numbers]
-;; Returns a list from 2 to √n
+;; Returns a list from 2 to n
 (define (get-candidates n)
   (rest (build-list n add1)))
-
 (check-expect (get-candidates 10) (list 2 3 4 5 6 7 8 9 10))
 
-;; sieve: [Listof Numbers] -> [Listof Numbers]
+;; sieve: [Listof Numbers] -> [Listof Primes]
 ;; Sieves a list of numbers for its primes
 (define (sieve lst)
   (cond
@@ -30,6 +29,7 @@
 
 
 ;; greatest-prime: [Listof Primes] Number -> Number
+;; Returns the largest prime number
 (define (greatest-prime lst n)
   (foldl max 1 (filter (λ (i) (divides? n i))
                      lst)))
@@ -40,6 +40,13 @@
 ;; Takes a number and returns its greatest prime factor.
 (define (euler n)
   (greatest-prime (sieve (get-candidates (integer-sqrt n))) n))
+;; Takes 42 minutes to find the greatest prime factor of the composite.
+;; Returns the correct number.
+
+;; euler.v2: Number -> Number
+;; Instead of going over the same lists multiple times,
+;;   I'm going to do it all in one shot.
+(define (euler.v2 n)))
 
 ;; Run
 (time (euler composite))
