@@ -4,31 +4,33 @@
 
 ;; Project Euler - Problem #10
 ;; Solved by Ali Ukani on May 17, 2011
-;; Calculate the sum of all the primes below two million.
+;; "Calculate the sum of all the primes below two million."
 
 (require racket)
 
 ;; divides?: Number Number -> Boolean
 ;; Returns true if a divides b
 (define (divides? a b)
-  (zero? (modulo a b)))
+  (= (modulo a b) 0))
 
 (check-expect (divides? 4 2) true)
 (check-expect (divides? 5 8) false)
 
-;; solve is a warapper for sum-primes: (solve limit) -> (sum-primes 2 limit empty)
-;; sum-primes : Number Number [Listof Numbers]
-;; Finds all the primes less than a given limit, and then returns their sum.
-;; i is a counter, lim is the limit, and primes is a list of the found primes.
-(define (solve limit)
-  (local [(define (sum-primes i lim primes)
-            (if (> i lim) (foldl + 0 primes)
-                (cond
-                  [(ormap (λ (p) (divides? i p)) primes) (primes (add1 i) lim primes)]
-                  [else (primes (add1 i) lim (cons i primes))])))]
-    (sum-primes 2 limit empty)))
-;; The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
-(check-expect (solve 10) 17)
+;; sieve: Number -> [Listof Primes]
+;; Returns a list of all prime numbers from 2 to n
+;;   1. Make list of numbers from 1 to n (and then drop the '1')
+;;   2. Remove all numbers divisible by the first number
+;;   3. Repeat step 2 for each of the next numbers until we get to a number > (sqrt n)
+(define (sieve n)
+  (local
+    [(define lst (rest (build-list n add1)))
+     (define (do lst)
+       (cond
+         [(> (first lst) (floor (sqrt n))) lst]
+         [(cons (first lst)
+                (do (filter (λ (i) (not (divides? i (first lst)))) lst)))]))]
+    (do lst)))
+(check-expect (sieve 10) '(2 3 5 7))
 
 ;; Solve
-(time (solve 2000000))
+(time (foldl + 0 (sieve 2000000)))
