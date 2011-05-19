@@ -12,6 +12,9 @@
 ;; Returns true if n has over 1000 digits
 (define (stop? n) (> n lim))
 
+;; a is term c-2
+;; b is term c-1
+;; c is the current term
 ;; t is what term c (c = a + b) is in the Fibbonacci sequence
 ;; Ex: a = 0, b = 1, c = 1, t = 2
 (define (solve a b t)
