@@ -5,4 +5,5 @@ The code in this repo is all written in [Racket](http://racket-lang.org).
 ## Asteroids  
 This was a project I did for Fundamentals of Computer Science (CS2500). I used faux-MVC to organize my code, which really helped me figure out how the functions I needed to write would work in terms of arguments and returns. I may revisit this project later and rewrite some of it. There's also a bug: if you win or lose, the game crashes. I don't really know what to do about that -- the code *should* work. 
 
-If you want to play Asteroids and you run Mac OS X, [you can download an executable version here](http://aukni.fm/6hei). 
+If you want to play Asteroids, you can download an executable version on [the Downloads page](https://github.com/ali/Racket/downloads). 
+
